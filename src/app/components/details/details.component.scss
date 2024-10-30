@@ -1,0 +1,32 @@
+.item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.quantity {
+    margin-bottom: 25px;
+    span {
+        padding: 8px 12px;
+        border: 1px solid rgba(0, 0, 0, 0.075);
+    }
+
+    .minus , .plus {
+        cursor: pointer;
+    }
+}
+
+.details__img{
+    .main__img {
+        object-fit: contain;
+        object-position: center;
+        height: 535px;
+    }
+
+    .subImages {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,44 @@
+<section class="details">
+    <div class="row d-flex align-items-center g-5">
+        <div class="col-6 details__img">
+            <img [src]="SpecificProduct.image" class="w-100 mb-3 main__img" [alt]="SpecificProduct.title">
+            <div class="subImages">
+                <div *ngFor="let img of SpecificProduct.image.slice(0 , 4)">
+                <img [src]="img" class="w-100 product" height="160" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="item">
+                <h3 class="mb-3 fw-bolder">{{SpecificProduct.title}}</h3>
+                <h4 class="text-main">{{SpecificProduct.title}}</h4>
+                <p>{{SpecificProduct.description}}</p>
+                <div class="mb-1">
+                    <!-- <span class="text-main">Available in stock:</span> {{SpecificProduct.quantity}} -->
+                </div>
+                <div>
+                    <!-- <span class="text-main">Sold:</span> {{SpecificProduct.sold}} -->
+                </div>
+            </div>
+            <div>
+                <div class="price__rating mb-3 d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="text-main">cost:</span> {{SpecificProduct.price |currency:"EGP"}}
+                    </div>
+                    <span>
+                        <i class="fa fa-star starRating ps-3 me-1"></i>{{SpecificProduct.rating.rate}}
+                    </span>
+                </div>
+                <!-- <div class="quantity">
+                    <span class="minus">-</span>
+                    <span>1</span>
+                    <span class="plus">+</span>
+                </div> -->
+                <div class="add__to__cart ">
+                    <button class="btn-main d-block w-100">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

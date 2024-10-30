@@ -1,0 +1,25 @@
+<section class="categories">
+    <div class="ms-2 mb-5 d-flex justify-content-center align-items-center">
+        <h2 class="p-2 product d-inline-block">wlcome to {{categoryIs}} category</h2>
+    </div>
+    <div class="popularProducts">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-4 col-6" *ngFor="let product of cateProducts">
+                <div class="product p-3">
+                    <div [routerLink]="'/details/'+product.id">
+                        <img class="w-100 mb-3" [src]="product.image" [alt]="product.title">
+                        <h3 class="h6 text-muted">{{product.title}}</h3>
+                        <h2 class="h5">{{product.title.split(' ').slice(0,3).join(' ')}}</h2>
+                        <div class="price__rating d-flex justify-content-between align-items-center">
+                            <h4 class="product__price">{{product.price | currency: 'EGP '}}</h4>
+                            <div><i class="fa fa-star starRating me-1"></i> <span>{{product.rating.rate}}</span></div>
+                        </div>
+                    </div>
+                    <div class="add__cart">
+                        <button (click)="addToCart(product.id)" class="btn-main"><i class="fa fa-plus"></i> Add Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,71 @@
+<section class="free__shipping">
+    <owl-carousel-o [options]="mainSlider">
+        <ng-template carouselSlide>
+            <div class="firstsliderImg  position-relative">
+                <div class="position-absolute main__slider">
+                    <span>Opening Sale Discount 50%</span>
+                    <h1>SuperMarket For Fresh Grocery</h1>
+                    <p class="text-muted">Introduced a new model for online grocery shopping and convenient home
+                        delivery.</p>
+                    <!-- <button class="btn-main">Shop now <i class="fas fa-arrow-right"></i></button> -->
+                </div>
+                <img src="./assets/images/slide-1.jpg" alt="">
+            </div>
+        </ng-template>
+        <ng-template carouselSlide>
+            <div class="secondsliderImg position-relative">
+                <div class="position-absolute main__slider">
+                    <span>Opening Sale Discount 50%</span>
+                    <h1>SuperMarket For Fresh Grocery</h1>
+                    <p class="text-muted">Introduced a new model for online grocery shopping and convenient home
+                        delivery.</p>
+                    <!-- <button class="btn-main">Shop now <i class="fas fa-arrow-right"></i></button> -->
+                </div>
+                <img src="./assets/images/slider-2.jpg" alt="">
+            </div>
+        </ng-template>
+    </owl-carousel-o>
+</section>
+
+<section class="featured__categories">
+
+    <h2 class="ms-2 mb-3">Featured Categories</h2>
+    <owl-carousel-o [options]="featuredCategories">
+
+        <ng-container *ngFor="let cate of categories" >
+            <ng-template carouselSlide>
+                    <div [routerLink]="'/categories/'+cate">
+                    <div class="product categories">
+                        <p>{{cate}}</p>
+                    </div>
+                </div>
+                </ng-template>
+        </ng-container>
+
+    </owl-carousel-o>
+</section>
+
+<section class="popular__products">
+    <h2 class="ms-2 mb-3">Popular Products</h2>
+
+    <div class="popularProducts">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-4 col-6" *ngFor="let item of products">
+                <div class="product p-3">
+                    <div [routerLink]="'/details/'+item.id">
+                        <img class="w-100 mb-3" [src]="item.image" [alt]="item.title">
+                        <h3 class="h6 text-muted">{{item.title}}</h3>
+                        <h2 class="h5">{{item.title.split(' ').slice(0,3).join(' ')}}</h2>
+                        <div class="price__rating d-flex justify-content-between align-items-center">
+                            <h4 class="product__price">{{item.price | currency: 'EGP '}}</h4>
+                            <div><i class="fa fa-star starRating me-1"></i> <span>{{item.rating.rate}}</span></div>
+                        </div>
+                    </div>
+                    <div class="add__cart">
+                        <button (click)="addToCart(item.id)" class="btn-main"><i class="fa fa-plus"></i> Add Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,137 @@
+<section class="w-75 my-5 bg-main-light p-4 rounded mx-auto shadow">
+    <h1 class="mb-3">Register</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="registerBtn()">
+        <div>
+            <label for="name">UserName :</label>
+            <input formControlName="username" type="text" name="username" id="username" class="form-control mb-3">
+            <div class="alert alert-danger"
+                *ngIf="registerForm.get('username')?.errors && (registerForm.get('username')?.touched || registerForm.get('username')?.value.length > 0) ">
+                <p *ngIf="registerForm.get('username')?.getError('required')">username Required</p>
+                <p *ngIf="registerForm.get('username')?.getError('minlength')">username MinLingth 3</p>
+                <p *ngIf="registerForm.get('username')?.getError('maxlength')">username MaxLength 15</p>
+            </div>
+        </div>
+        <div formGroupName="name" class="row">
+            <div class="col-6">
+                <label for="firstname">Firstname:</label>
+                <input id="firstname" class="form-control" formControlName="firstname" type="text" />
+                <div class="alert alert-danger"
+                    *ngIf="registerForm.get('name.firstname')?.errors && (registerForm.get('name.firstname')?.touched || registerForm.get('name.firstname')?.value.length > 0) ">
+                    <p *ngIf="registerForm.get('name.firstname')?.getError('required')">firstname Required</p>
+                    <p *ngIf="registerForm.get('name.firstname')?.getError('minlength')">firstname MinLingth 3</p>
+                    <p *ngIf="registerForm.get('name.firstname')?.getError('maxlength')">firstname MaxLength 15</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <label for="lastname">Lastname:</label>
+                <input id="lastname" class="form-control" formControlName="lastname" type="text" />
+                <div class="alert alert-danger"
+                    *ngIf="registerForm.get('name.lastname')?.errors && (registerForm.get('name.lastname')?.touched || registerForm.get('name.lastname')?.value.length > 0) ">
+                    <p *ngIf="registerForm.get('name.lastname')?.getError('required')">lastname Required</p>
+                    <p *ngIf="registerForm.get('name.lastname')?.getError('minlength')">lastname MinLingth 3</p>
+                    <p *ngIf="registerForm.get('name.lastname')?.getError('maxlength')">lastname MaxLength 15</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="email">email :</label>
+            <input formControlName="email" type="email" name="email" id="email" class="form-control mb-3">
+            <div class="alert alert-danger"
+                *ngIf="registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.value.length > 0) ">
+                <p *ngIf="registerForm.get('email')?.getError('required')">Email Required</p>
+                <p *ngIf="registerForm.get('email')?.getError('email')">Email InValid</p>
+            </div>
+        </div>
+        <div>
+            <label for="password">password :</label>
+            <input formControlName="password" type="password" name="password" id="password" class="form-control mb-3">
+            <div class="alert alert-danger"
+                *ngIf="registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.value.length > 0) ">
+                <p *ngIf="registerForm.get('password')?.getError('required')">password Required</p>
+                <p class="m-0" *ngIf="registerForm.get('password')?.getError('pattern')">
+                    - The first letter most be capital <br>
+                    - Password must be at least 6 and at most 20 characters long.</p>
+            </div>
+        </div>
+        <div formGroupName="address" class="row">
+            <div class="col-6">
+                <label for="city">City :</label>
+                <input formControlName="city" id="city" class="form-control" type="text" />
+                <div class="alert alert-danger" *ngIf="registerForm.get('address.city')?.errors && (registerForm.get('address.city')?.touched || registerForm.get('address.city')?.value.length > 0)">
+                    <p *ngIf="registerForm.get('address.city')?.getError('required')">City Required</p>
+                    <p *ngIf="registerForm.get('address.city')?.getError('minlength')">City MinLingth 3</p>
+                    <p *ngIf="registerForm.get('address.city')?.getError('maxlength')">City MaxLength 15</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <label for="street">street :</label>
+                <input formControlName="street" id="street" class="form-control" type="text" />
+                <div class="alert alert-danger"
+                    *ngIf="registerForm.get('address.street')?.errors && (registerForm.get('address.street')?.touched || registerForm.get('address.street')?.value.length > 0)">
+                    <p *ngIf="registerForm.get('address.street')?.getError('required')">street Required</p>
+                    <p *ngIf="registerForm.get('address.street')?.getError('minlength')">street must be at least 3
+                        characters</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <label for="number">number :</label>
+                <input formControlName="number" id="number" class="form-control" type="text" />
+                <div class="alert alert-danger"
+                    *ngIf="registerForm.get('address.number')?.errors && (registerForm.get('address.number')?.touched || registerForm.get('address.number')?.value.length > 0)">
+                    <p *ngIf="registerForm.get('address.number')?.getError('required')">number Required</p>
+                    <p *ngIf="registerForm.get('address.number')?.getError('minlength')">number must be at least 3
+                        characters</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <label for="zipcode">zipcode :</label>
+                <input formControlName="zipcode" id="zipcode" class="form-control" type="text" />
+                <div class="alert alert-danger"
+                    *ngIf="registerForm.get('address.zipcode')?.errors && (registerForm.get('address.zipcode')?.touched || registerForm.get('address.zipcode')?.value.length > 0)">
+                    <p *ngIf="registerForm.get('address.zipcode')?.getError('required')">zipcode Required</p>
+                    <p *ngIf="registerForm.get('address.zipcode')?.getError('minlength')">zipcode must be at least 3
+                        characters</p>
+                </div>
+            </div>
+            <div formGroupName="geolocation" class="row">
+                <div class="col-6">
+                    <label for="lat">Lat:</label>
+                    <input formControlName="lat" id="lat" class="form-control" type="text" />
+                    <div class="alert alert-danger"
+                        *ngIf="registerForm.get('address.geolocation.lat')?.errors && (registerForm.get('address.geolocation.lat')?.touched || registerForm.get('address.geolocation.lat')?.value.length > 0)">
+                        <p *ngIf="registerForm.get('address.geolocation.lat')?.getError('required')">Lat is required</p>
+                        <p *ngIf="registerForm.get('address.geolocation.lat')?.getError('minlength')">Lat must be at
+                            least 3 characters</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="long">Long:</label>
+                    <input formControlName="long" id="long" class="form-control" type="text" />
+                    <div class="alert alert-danger"
+                        *ngIf="registerForm.get('address.geolocation.long')?.errors && (registerForm.get('address.geolocation.long')?.touched || registerForm.get('address.geolocation.long')?.value.length > 0)">
+                        <p *ngIf="registerForm.get('address.geolocation.long')?.getError('required')">Long is required
+                        </p>
+                        <p *ngIf="registerForm.get('address.geolocation.long')?.getError('minlength')">Long must be at
+                            least 3 characters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="phone">phone :</label>
+            <input formControlName="phone" type="tel" name="phone" id="phone" class="form-control mb-3">
+            <div class="alert alert-danger"
+                *ngIf="registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.value.length > 0) ">
+                <p *ngIf="registerForm.get('phone')?.getError('required')">phone Required</p>
+                <p *ngIf="registerForm.get('phone')?.getError('pattern')">accept only egypt phone numbers</p>
+            </div>
+        </div>
+        <p *ngIf="responseError" class="alert alert-danger text-center">{{responseError}}</p>
+
+        <button [disabled]="registerForm.invalid" class="btn-main d-block ms-auto">
+            <i *ngIf="spinner" class="fas fa-spin fa-spinner"></i>
+            Register
+        </button>
+    </form>
+
+</section>
